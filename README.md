@@ -1,7 +1,7 @@
 <h1><br>Preliminary Assignment</br></h1>
 
 <p>Reference: https://threejs.org/examples/#css3d_periodictable</p>
-<p>Source Code: https://github.com/mrdoob/three.js/blob/master/examples/css3d_periodictable.html</p>
+<p>Original Source Code: https://github.com/mrdoob/three.js/blob/master/examples/css3d_periodictable.html</p>
 
 1. You will see a 3D shape with the periodic table of elements
 2. Using Facebook or Linkedin, I want you to login & pull your list of friends or associates
