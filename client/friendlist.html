@@ -166,6 +166,7 @@
 			<button id="sphere">SPHERE</button>
 			<button id="helix">HELIX</button>
 			<button id="grid">GRID</button>
+			<button id="cylinder">CYLINDER</button>
 		</div>
 
 		<script>
@@ -249,7 +250,7 @@
 			var controls;
 
 			var objects = [];
-			var targets = { table: [], sphere: [], helix: [], grid: [] };
+			var targets = { table: [], sphere: [], helix: [], grid: [], cylinder: [] };
 
 			init();
 			animate();
@@ -371,7 +372,7 @@
 				// helix
 
 				var vector = new THREE.Vector3();
-				var cylindrical = new THREE.Cylindrical();
+				var cylindrical = new THREE.Cylindrical();				
 
 				for ( var i = 0, l = objects.length; i < l; i ++ ) {
 
@@ -405,6 +406,31 @@
 					object.position.z = ( Math.floor( i / 25 ) ) * 1000 - 2000;
 
 					targets.grid.push( object );
+
+				}
+
+				// cylinder
+
+				var vector = new THREE.Vector3();
+				var cylindrical = new THREE.Cylindrical();				
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var theta = i * 2.6 + (Math.PI/2) ;
+					var y = - ( i * 5.75 ) + 450;
+					var object = new THREE.Object3D();
+
+					cylindrical.set( 650, theta, y );
+
+					object.position.setFromCylindrical( cylindrical );
+					
+					vector.x = object.position.x * 2;
+					vector.y = object.position.y
+					vector.z = object.position.z * 2;
+
+					object.lookAt( vector );
+
+					targets.cylinder.push( object );
 
 				}
 
@@ -450,6 +476,13 @@
 					transform( targets.grid, 2000 );
 
 				}, false );
+
+				var button = document.getElementById( 'cylinder' );
+				button.addEventListener( 'click', function ( event ) {
+
+					transform( targets.cylinder, 2000 );
+
+				}, false );				
 
 				transform( targets.table, 2000 );
 
